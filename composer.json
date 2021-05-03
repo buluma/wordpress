@@ -24,7 +24,8 @@
   },
   "require": {
     "php": ">=5.6.20",
-    "ext-json": "*"
+    "ext-json": "*",
+    "phpunit/php-code-coverage": "^9.2"
   },
   "provide": {
     "wordpress/core-implementation": "dev-master"
