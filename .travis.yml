@@ -13,7 +13,7 @@ before_script:
  # - ./bin/travis.sh $(phpenv version-name) $(pwd)
 
 install:
- - travis_retry composer install --no-interaction --prefer-source --dev
+ - travis_retry composer install --no-interaction --prefer-source
 
 notifications:
  on_success: always
