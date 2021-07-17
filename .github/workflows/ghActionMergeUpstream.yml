@@ -5,7 +5,7 @@ on:
     # scheduled for every 1hr
   push:
     paths:
-      - '.github/workflows/upstream.yml'
+      - '.github/workflows/ghActionMergeUpstream.yml'
 
 jobs:
   merge-upstream:
