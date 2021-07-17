@@ -24,6 +24,7 @@ RUN set -ex; \
 	apt-get install -y --no-install-recommends \
 		libfreetype6-dev \
 		libjpeg-dev \
+		libmagickwand-dev \
 		libpng-dev \
 		libzip-dev \
 	; \
@@ -39,6 +40,10 @@ RUN set -ex; \
 		mysqli \
 		zip \
 	; \
+# https://pecl.php.net/package/imagick
+	pecl install imagick-3.5.0; \
+	docker-php-ext-enable imagick; \
+	rm -r /tmp/pear; \
 	\
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
 	apt-mark auto '.*' > /dev/null; \
@@ -81,8 +86,8 @@ RUN { \
 	} > /usr/local/etc/php/conf.d/error-logging.ini
 
 RUN set -eux; \
-	version='5.8-beta1'; \
-	sha1='cced09b9650482ca3deb9600b90b9a8a764835ef'; \
+	version='5.8-RC4'; \
+	sha1='0c9699c8180e865387f4fe2d26577aef5461462e'; \
 	\
 	curl -o wordpress.tar.gz -fL "https://wordpress.org/wordpress-$version.tar.gz"; \
 	echo "$sha1 *wordpress.tar.gz" | sha1sum -c -; \
